@@ -10,17 +10,17 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 @DynamoDBTable(tableName = "help_desk")
 public class HelpDesk {
 
-    private int msgId;
+    private int msg_id;
     private String message;
     private String msgStatus;
 
     @DynamoDBHashKey(attributeName = "msg_id")
     public int getMsgId() {
-        return msgId;
+        return msg_id;
     }
 
     public void setMsgId(int msgId) {
-        this.msgId = msgId;
+        this.msg_id = msgId;
     }
 
     @DynamoDBAttribute(attributeName = "message")
