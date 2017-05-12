@@ -16,6 +16,7 @@ $.ajax({
 
 $('#helpTicket').click(function(e) {
 		var msg = $('#msg').val();
+		
 		$.ajax({
 		    url: '/helpdesk?message=' + msg,
 		    type: "post",
@@ -23,7 +24,12 @@ $('#helpTicket').click(function(e) {
 	
 		    success: function(data, textStatus, jqXHR) {
 		        // since we are using jQuery, you don't need to parse response
-		       alert("Created")
+		       alert("Created");
+		      
+		    },
+		    error: function (jqXHR, textStatus, errorThrown) { console.log(textStatus + errorThrown) },
+		    complete : function(){
+		    	 window.location = "http://52.90.155.74/";
 		    }
 		});
 		});

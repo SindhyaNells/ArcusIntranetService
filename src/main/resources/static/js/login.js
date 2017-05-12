@@ -2,7 +2,8 @@
 $(document).ready(function() {
 	
 	 $('.next').hide();
-    
+	 $('.dropbox').hide();
+     
 	 var lock = new Auth0Lock("1wN2D7f28qRiRo30KgguaNNyGSH22LiP", "arcuss.auth0.com", {
 	    auth: {
 	      params: { scope: 'openid email'//, 
@@ -80,8 +81,6 @@ function goToDropbox(){
 	  /*$('.goToDropbox').click(function(e) {
 		  window.location = "index.html";  
 	  })*/
-	  
-	  
-	  location.href='https://arcuss.auth0.com/login?client=1wN2D7f28qRiRo30KgguaNNyGSH22LiP&ldaps=1&state=&redirect_uri=&request_id=&prompt=';
-		  
+	 //location.href='https://arcuss.auth0.com/samlp/pOyH0Hfi2fE0aqX8Co3r1zL8LQXnaLum?client=1wN2D7f28qRiRo30KgguaNNyGSH22LiP&ldaps=1&protocol=samlp&state=&redirect_uri=https://www.dropbox.com/sso/3434737095&request_id=' +  localStorage.getItem('id_token')+ ' value="Go to Dropbox">
+       
 }
