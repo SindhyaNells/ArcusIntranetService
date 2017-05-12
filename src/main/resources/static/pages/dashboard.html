@@ -19,7 +19,7 @@
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/less/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -36,19 +36,21 @@
 
 </head>
 
-<body>
+<body >
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+        	 
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                    <h1 class="text-center">Welcome to Arcus Intranet</h1>
+                       
                     </div>
-                    <div class="panel-body">
-                        <form role="form">
+                    <div class="panel-body" style="background-image:url('../less/arcus.jpg'); background-size: 1050px; height:600px;">
+                         <form role="form" class="text-center">
                             <fieldset>
-                                <div class="form-group">
+                             <h3 class="panel-title" id="loginlabel">Please log in to continue</h3><br><br>
+                               <!--  <div class="form-group">
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
@@ -58,20 +60,24 @@
                                     <label>
                                         <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                     </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form 
-                                <button class="btn btn-lg btn-success btn-block" id="btn-login">Login</button>-->
-                                
-                                <img alt="avatar" class="avatar" style="display:none;">
-								    <p>Welcome <span class="nickname"></span></p>
-								    <button type="submit" class="btn-login ">Sign In</button>
-								    <button type="submit" class="btn-logout" style="display:none;">Sign Out</button>
-								  
+                                </div> -->
+                                  <p> 
+                                  <button type="submit" class="btn btn-lg btn-login ">Sign In</button> 
+                                 
+                                  
+	                                 <h3><span class="nickname"></span></h3> <br><br>
+	                                 <img alt="avatar" class="avatar" style="display:none;">
+									 <br> <br>  <a href="index.html" class="btn btn-lg next">Click next to continue</a> <br><br>
+									    
+	      							<input type="button" class="btn btn-primary next" onclick="goToDropbox()" value="Go to Dropbox">
+									
+									<button type="submit" class="btn btn-lg btn-logout" style="display:none;">Sign Out</button><br>
+								 
                             </fieldset>
-                        </form>
+                        </form>  
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 
@@ -89,6 +95,7 @@
 	
 	<script src="../js/login.js"></script>
 	
+	 
 </body>
 
 </html>

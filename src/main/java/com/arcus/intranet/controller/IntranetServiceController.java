@@ -33,5 +33,21 @@ public class IntranetServiceController {
 
         return new ResponseEntity<HelpDesk>(helpDesk, HttpStatus.CREATED);
     }
+    
+    @RequestMapping(value = "/employee/email",method = RequestMethod.GET)
+    public List getEmployee(@RequestParam(value = "email",required = true) String email){
+        EmployeeDAO employeeDAO=new EmployeeDAO();
+        List<Employee> employeeList=employeeDAO.getEmployeeByEmail(email);
+        return employeeList;
+    }
 
+
+    @RequestMapping(value = "/helpdesk",method = RequestMethod.GET)
+    public List getHelpMessage(){
+
+        HelpDeskDAO helpDeskDAO=new HelpDeskDAO();
+        List<HelpDesk> helpDesk=helpDeskDAO.getMessageList();
+
+        return helpDesk;
+    }
 }

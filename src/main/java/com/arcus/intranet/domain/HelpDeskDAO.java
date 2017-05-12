@@ -5,10 +5,14 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.arcus.intranet.ApiConstants;
+import com.arcus.intranet.model.Employee;
 import com.arcus.intranet.model.HelpDesk;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sindhya on 4/17/17.
@@ -35,6 +39,14 @@ public class HelpDeskDAO {
         mapper.save(newHelpDeskMessage);
 
         return newHelpDeskMessage;
+    }
+    
+    public List<HelpDesk> getMessageList(){
+    	DynamoDBMapper mapper = new DynamoDBMapper(client);
+        DynamoDBScanExpression scanExpression=new DynamoDBScanExpression();
+        helpDeskMessageList=mapper.scan(HelpDesk.class, scanExpression);
+
+        return helpDeskMessageList;
     }
 
 }

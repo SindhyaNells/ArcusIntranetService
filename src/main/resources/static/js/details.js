@@ -2,7 +2,7 @@
 	
 $( document ).ready(function() {
 $.ajax({
-    url: '/employee/list?employeeNumber=2',
+    url: '/employee/list?employeeName=2',
     type: "get",
     dataType: "json",
 

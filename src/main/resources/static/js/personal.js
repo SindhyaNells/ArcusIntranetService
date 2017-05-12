@@ -1,6 +1,8 @@
 //http://34.201.120.105:8080/intranet_service/employee/list?employeeNumber=value
 	
 $( document ).ready(function() {
+	
+	
 $.ajax({
     url: '/employee/list?employeeNumber=2',
     type: "get",

@@ -43,5 +43,15 @@ public class EmployeeDAO {
         return employeeResult;
     }
 
+    public List<Employee> getEmployeeByEmail(String email){
+        DynamoDBMapper mapper = new DynamoDBMapper(client);
+
+        Map<String, AttributeValue> filterMap = new HashMap<>();
+        filterMap.put(":val1", new AttributeValue().withS(email));
+        DynamoDBScanExpression scanExpression=new DynamoDBScanExpression().withFilterExpression("email=:val1").withExpressionAttributeValues(filterMap);
+        employeeResult=mapper.scan(Employee.class, scanExpression);
+
+        return employeeResult;
+    }
 
 }

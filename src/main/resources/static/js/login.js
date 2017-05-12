@@ -1,15 +1,17 @@
 
 $(document).ready(function() {
-	  
-	  var lock = new Auth0Lock("1wN2D7f28qRiRo30KgguaNNyGSH22LiP", "arcuss.auth0.com", {
+	
+	 $('.next').hide();
+    
+	 var lock = new Auth0Lock("1wN2D7f28qRiRo30KgguaNNyGSH22LiP", "arcuss.auth0.com", {
 	    auth: {
 	      params: { scope: 'openid email'//, 
-	    	  //"return_url": "http://54.183.224.145:8070/pages/index.html"}
+	    	
 	    }
-	    //redirectUrl: 'http://54.183.224.145:8070/pages/index.html'
-	    //allowedConnections: ['Username-Password-Authentication']
+	    
 	  }});
 
+	  
 	  $('.btn-login').click(function(e) {
 	    e.preventDefault();
 	    lock.show();
@@ -20,6 +22,8 @@ $(document).ready(function() {
 	    logout();
 	  })
 
+	   
+	  
 	  lock.on("authenticated", function(authResult) {
 	    lock.getProfile(authResult.idToken, function(error, profile) {
 	      if (error) {
@@ -27,6 +31,7 @@ $(document).ready(function() {
 	        return;
 	      }
 	      localStorage.setItem('id_token', authResult.idToken);
+	      document.cookie = authResult.idToken;
 	      // Display user information
 	      show_profile_info(profile);
 	    });
@@ -47,16 +52,36 @@ $(document).ready(function() {
 	  };
 
 	  var show_profile_info = function(profile) {
-	     $('.nickname').text(profile.nickname);
+	     $('.nickname').text("Hi "+ profile.nickname);
 	     $('.btn-login').hide();
+	     $('.panel-title').hide();
 	     $('.avatar').attr('src', profile.picture).show();
 	     $('.btn-logout').show();
+	     $('.next').show();
+	     $('.dropbox').show();
 	  };
+	  
 
+	  $('.next').click(function(e) {
+		  window.location = "index.html";  
+	  })
+	  
+	 
 	  var logout = function() {
 	    localStorage.removeItem('id_token');
-	    window.location.href = "login.html";
+	    window.location.href = "logout.html";
 	  };
 
 	  retrieve_profile();
 	});
+
+
+function goToDropbox(){
+	  /*$('.goToDropbox').click(function(e) {
+		  window.location = "index.html";  
+	  })*/
+	  
+	  
+	  location.href='https://arcuss.auth0.com/login?client=1wN2D7f28qRiRo30KgguaNNyGSH22LiP&ldaps=1&state=&redirect_uri=&request_id=&prompt=';
+		  
+}
