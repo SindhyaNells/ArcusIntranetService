@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Demo</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="app" ng-controller="home as home">
+	<h1>Login</h1>
+	<div class="container" ng-show="!home.authenticated">
+		With Fitbit: <a href="/login">click here</a>
+	</div>
+	<div class="container" ng-show="home.authenticated">
+		Logged in as: <span ng-bind="home.user"></span><br />
+		Lifetime Steps: <span ng-bind="home.lifetimeSteps"></span><br />
+		Lifetime Distance: <span ng-bind="home.lifetimeDistance"></span><br />
+		Lifetime Floors: <span ng-bind="home.lifetimeFloors"></span><br />
+		
+		Goal Steps: <span ng-bind="home.goalSteps"></span><br />
+		Goal  calories out: <span ng-bind="home.goalcaloriesOut"></span><br />
+		Goal  Distance: <span ng-bind="home.goalDistance"></span><br />
+		Goal  Floors: <span ng-bind="home.goalFloors"></span><br />
+		 
+		weight: <span ng-bind="home.weight"></span><br />
+		startWeight: <span ng-bind="home.startWeight"></span><br />
+		fat: <span ng-bind="home.fat"></span><br />
+		
+		dailycalories: <span ng-bind="home.dailyCalories"></span><br />
+		
+	</div>
+	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module("app", []).controller("home", function($http) {
+			var self = this;
+
+			$http.get("/user").success(function(data) {
+				self.user = data.userAuthentication.details.user.fullName;
+				self.authenticated = true;
+			}).error(function() {
+				self.user = "N/A";
+				self.authenticated = false;
+			});
+
+			$http.get("/lifetime-activity").success(function(data) {
+				self.lifetimeSteps = data.steps.toLocaleString();
+				self.lifetimeFloors = data.floors.toLocaleString();
+				self.lifetimeDistance = data.distance.toLocaleString();
+				
+			}).error(function() {
+				self.lifetimeSteps = "N/A";
+			});
+			
+			$http.get("/activity-goal").success(function(data) {
+				self.goalSteps = data.steps.toLocaleString();
+				self.goalFloors = data.floors.toLocaleString();
+				self.goalDistance = data.distance.toLocaleString();
+				self.goalcaloriesOut = data.caloriesOut.toLocaleString();
+			}).error(function() {
+				self.lifetimeSteps = "N/A";
+			});
+			
+			$http.get("/daily-activity").success(function(data) {
+				self.dailyCalories = data.caloriesOut.toLocaleString();
+				
+			}).error(function() {
+				self.lifetimeSteps = "N/A";
+			});
+			
+			
+			$http.get("/weight-goal").success(function(data) {
+				self.startWeight = data.startWeight.toLocaleString();
+				self.weight = data.weight.toLocaleString();
+				 
+			}).error(function() {
+				self.startWeight = "N/A";
+			});
+			
+
+			$http.get("/fat-goal").success(function(data) {
+				self.fat = data.fat.toLocaleString();
+			}).error(function() {
+				self.fat = "N/A";
+			});
+		});
+	</script>
+</body>
+</html>
