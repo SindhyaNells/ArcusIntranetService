@@ -29,9 +29,9 @@ public class IntranetServiceController {
     public ResponseEntity<HelpDesk> createHelpMessage(@RequestParam(value = "message",required = false,defaultValue = "0") String message){
 
         HelpDeskDAO helpDeskDAO=new HelpDeskDAO();
-        HelpDesk helpDesk=helpDeskDAO.createMessage(message);
+        HelpDesk helpDesk1=helpDeskDAO.createMessage(message);
 
-        return new ResponseEntity<HelpDesk>(helpDesk, HttpStatus.CREATED);
+        return new ResponseEntity<HelpDesk>(helpDesk1, HttpStatus.CREATED);
     }
     
     @RequestMapping(value = "/employee/email",method = RequestMethod.GET)
