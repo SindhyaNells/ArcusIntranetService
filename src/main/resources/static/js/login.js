@@ -80,8 +80,8 @@ $(document).ready(function() {
 function goToDropbox(){
 	  $('.goToDropbox').click(function(e) {
 		  //window.location = "index.html";  
-		  location.href='https://arcuss.auth0.com/samlp/pOyH0Hfi2fE0aqX8Co3r1zL8LQXnaLum?client=1wN2D7f28qRiRo30KgguaNNyGSH22LiP&ldaps=1&protocol=samlp&state=&redirect_uri=https://www.dropbox.com/sso/3434737095&request_id=' +  localStorage.getItem('id_token')+ ' value="Go to Dropbox">
-		     
+		  //location.href='https://arcuss.auth0.com/samlp/pOyH0Hfi2fE0aqX8Co3r1zL8LQXnaLum?client=1wN2D7f28qRiRo30KgguaNNyGSH22LiP&ldaps=1&protocol=samlp&state=&redirect_uri=https://www.dropbox.com/sso/3434737095&request_id=' +  localStorage.getItem('id_token')+ ' value="Go to Dropbox">
+		  location.href='https://www.dropbox.com/work/arcus%20Team%20Folder';
 	  })
 	   
 }
