@@ -10,7 +10,7 @@ To begin using this template, choose one of the following options to get started
 * Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git`
 * Fork the repo
 
-## Using the Source Files
+## Using the Source Files 
 
 After cloning the repo take a look at the `gulpfile.js` and check out the tasks available:
 * `gulp` The default task will compile the LESS and JS into the `dist` directory and minify the output, and it will copy all vendor libraries from `bower_components` into the `vendor` directory
